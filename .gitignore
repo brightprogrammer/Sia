@@ -1,3 +1,7 @@
+# exclude build and cache
+build/
+.cache/
+
 # Prerequisites
 *.d
 
