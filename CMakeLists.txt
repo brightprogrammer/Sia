@@ -11,10 +11,14 @@ set(VERSION_NUMBER "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_
 project(SIA VERSION ${VERSION_NUMBER})
 message("-- VERSION NUMBER : " ${VERSION_NUMBER})
 
-configure_file(Config.hpp.in ${PROJECT_SOURCE_DIR}/sia/Config.hpp)
+set(SIA_UTILS_DIR ${PROJECT_SOURCE_DIR}/utils)
+set(SIA_COMPILER_DIR ${PROJECT_SOURCE_DIR}/compiler)
+
+configure_file(Config.hpp.in ${PROJECT_SOURCE_DIR}/Config.hpp)
 
 add_subdirectory(utils)
+add_subdirectory(compiler)
 
-add_executable(sia main.cpp)
-target_include_directories(sia PRIVATE ${PROJECT_SOURCE_DIR}/sia ${PROJECT_SOURCE_DIR}/utils)
-target_link_libraries(sia sia_utils)
+add_executable(siac main.cpp)
+target_include_directories(siac PRIVATE ${SIA_UTILS_DIR} ${SIA_COMPILER_DIR})
+target_link_libraries(siac sia_utils)

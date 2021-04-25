@@ -1,5 +1,5 @@
 /**
- * @file Token.hpp
+ * @file TokenTypes.hpp
  * @author Siddharth Mishra
  * @date 2021-04-25
  * 
@@ -26,9 +26,21 @@
  *
  */
 
-#ifndef SIA_LEXER_TOKEN_HPP
-#define SIA_LEXER_TOKEN_HPP
+#ifndef SIA_COMPILER_LEXER_TOKEN_TYPES_HPP
+#define SIA_COMPILER_LEXER_TOKEN_TYPES_HPP
 
+typedef unsigned int uint;
 
+enum class TokenType : uint {
+    Plus            = 1,
+    Minus           = 2,
+    Star            = 3,
+    BackSlash       = 4,
+    FrontSlash      = 5,
+    Integer         = 6,
+    Float           = 7,
+    Boolean         = 8,
+    String          = 9,
+};
 
-#endif//SIA_LEXER_TOKEN_HPP
+#endif//SIA_COMPILER_LEXER_TOKEN_TYPES_HPP

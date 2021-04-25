@@ -198,9 +198,14 @@ void ArgumentParser::ParseArguments(const uint &argc, char **argv){
             }
         }
 
-        // check valid number of values
-        if((option.values.size() != description.valueCount) && description.valueCount!=-1){
+        // check valid number of values for non infinite options
+        if((option.values.size() != description.valueCount) && description.valueCount != -1){
             LOG(ERROR, "\"%s\" option takes only %i argument(s) : %lu given", option.name, description.valueCount, option.values.size())
+            invalidNumberOfValuesCount++;
+        }
+        // for options that take infinite values
+        if((description.valueCount == -1) && option.values.size() == 0 ){
+            LOG(ERROR, "\"%s\" option needs atleast 1 argument : %lu given", option.name, option.values.size())
             invalidNumberOfValuesCount++;
         }
     }
